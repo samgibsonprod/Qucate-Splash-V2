@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins|Roboto">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        backdrop: {
+                            light: '#F5F5F5',
+                            dark: '#F0F2F4'
+                        }
+                    }
+                },
+                fontFamily: {
+                    'sans': ['Poppins', 'Roboto', '"Helvetica Neue"']
+                },
+                container: {
+                    center: true,
+                    //padding: '2rem'
+                }
+            }
+        }
+    </script>
+    <title>Qucate</title>
+</head>
+<body class="w-full bg-backdrop-dark w-full h-full text-center text-xl">
+    <div class="w-full p-8 md:h-[800px] bg-backdrop-dark">
+        <div class="m-auto max-w-5xl z-auto">
+            <img class="inline mt-3 w-[192px]" src="assets/qucate.svg">
+            <p class="mb-8">Enhancing the quality of your functional software solutions</p>
+            <img class="m-auto w-full drop-shadow-2xl max-w-[920px]" src="assets/test-run.png">
+        </div>
+    </div>
+    <div class="w-full p-8 md:h-[600px] bg-white flex justify-center items-center">
+        <div class="m-auto max-w-5xl md:grid grid-cols-3">
+            <div class="col-span-1 m-auto">
+                <p class="text-left">A test management platform that provides a holistic view of your testing process</p>
+            </div>
+            <div class="col-span-2 m-auto">
+                <img class="inline" src="assets/rot-graph.png">
+            </div>
+        </div>
+    </div>
+    <div class="w-full p-8 md:h-[600px] flex justify-center items-center">
+        <div class="m-auto max-w-5xl md:grid grid-cols-3">
+            <div class="col-span-3 m-auto mb-8">
+                <p>Transform your software testing process and improve quality.</p>
+            </div>
+            <div class="col-span-2 m-auto">
+                <img class="inline" src="assets/features.png">
+            </div>
+            <div class="col-span-1 m-auto my-8 md:my-auto text-base leading-10 font-semibold md:ml-12 md:text-right">
+                <p>Cloud native ✅</p>
+                <p>Extensive onboarding tutorial ✅</p>
+                <p>30-day free trial ✅</p>
+                <p>No credit card details required ✅</p>
+                <p>No fixed-term contract ✅</p>
+            </div>
+        </div>
+    </div>
+    <div class="w-full p-8 md:h-[600px] bg-white flex justify-center items-center">
+        <div class="m-auto max-w-5xl md:grid grid-cols-3 gap-28">
+            <div class="col-span-1 m-auto text-2xl font-black">
+                <h1>No hidden costs.</h1>
+                <h1>No paid extras.</h1>
+            </div>
+            <div class="col-span-2 m-auto">
+                <img class="inline" src="assets/pricing.png">
+            </div>
+        </div>
+    </div>
+    <div class="w-full p-8">
+        <div class="m-auto max-w-5xl md:grid grid-cols-3 md:h-[400px]">
+            <div class="col-span-2 m-auto">
+                <img class="inline" src="assets/test-plan.png">
+            </div>
+            <div class="col-span-1 m-auto">
+                <p class="font-semibold">Collaborate on the planning and management of test plans.</p>
+            </div>
+        </div>
+        <hr class="border-1 my-12 border-solid border-[#D1D1D1] max-w-3xl m-auto">
+        <div class="m-auto max-w-5xl md:grid grid-cols-3 md:h-[400px]">
+            <div class="col-span-2 m-auto md:order-1">
+                <img class="inline" src="assets/test-plan-templates.png">
+            </div>
+            <div class="col-span-1 m-auto">
+                <p class="font-semibold">Create dynamic test plan templates and test run templates to speed up the software testing process.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
