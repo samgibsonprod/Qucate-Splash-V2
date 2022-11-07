@@ -144,13 +144,18 @@
     <script>
         // https://webdesign.tutsplus.com/tutorials/animate-on-scroll-with-javascript--cms-36671
 
+        const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
         // return elements that require animating
         const scrollElements = document.querySelectorAll("[data-animation]");
 
-        // add relevant classes for pre-animation.
-        scrollElements.forEach((el) => {
-            el.classList.add("opacity-0", "transition-opacity", "duration-500");
-        })
+        // add relevant classes for pre-animation (if browser animations are enabled).
+        if (mediaQuery && !mediaQuery.matches)
+        {
+            scrollElements.forEach((el) => {
+                el.classList.add("opacity-0", "transition-opacity", "duration-500");
+            });
+        }
 
         const elementInView = (el, percentageScroll = 100) => {
             const elementTop = el.getBoundingClientRect().top;
@@ -185,7 +190,9 @@
         }
 
         window.addEventListener('scroll', () => {
-            throttle(handleScrollAnimation, 300);
+            if (mediaQuery && !mediaQuery.matches) {
+                throttle(handleScrollAnimation, 300);
+            }
         });
     </script>
 </body>
