@@ -6,82 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins|Roboto">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        backdrop: {
-                            light: '#F5F5F5',
-                            dark: '#F0F2F4'
-                        }
-                    },
-                    keyframes: {
-                        'slide-in-left': {
-                            '0%': {
-                                transform: 'translateX(-200px)',
-                                opacity: 0
-                            },
-                            '100%': {
-                                transform: 'translateX(0)',
-                                opacity: 1
-                            }
-                        },
-                        'slide-in-right': {
-                            '0%': {
-                                transform: 'translateX(200px)',
-                                opacity: 0
-                            },
-                            '100%': {
-                                transform: 'translateX(0)',
-                                opacity: 1
-                            }
-                        },
-                        'slide-in-top': {
-                            '0%': {
-                                transform: 'translateY(-200px)',
-                                opacity: 0
-                            },
-                            '100%': {
-                                transform: 'translateY(0)',
-                                opacity: 1
-                            }
-                        },
-                        'slide-in-bottom': {
-                            '0%': {
-                                transform: 'translateY(200px)',
-                                opacity: 0
-                            },
-                            '100%': {
-                                transform: 'translateY(0)',
-                                opacity: 1
-                            }
-                        }
-                    },
-                    animation: {
-                        'slide-left': 'slide-in-left 1s ease-in-out both',
-                        'slide-right': 'slide-in-right 1s ease-in-out both',
-                        'slide-top': 'slide-in-top 1s ease-in-out both',
-                        'slide-bottom': 'slide-in-bottom 1s ease-in-out both'
-                    }
-                },
-                fontFamily: {
-                    'sans': ['Poppins', 'Roboto', '"Helvetica Neue"']
-                },
-                container: {
-                    center: true
-                }
-            }
-        }
-    </script>
+    <script src="src/scripts/tailwind-config.js"></script>
     <title>Qucate</title>
 </head>
 <body class="w-full bg-backdrop-dark w-full h-full text-center text-xl">
     <div class="w-full p-8 md:h-[800px] bg-backdrop-dark">
         <div class="m-auto max-w-5xl z-auto">
-            <img class="inline mt-3 w-[192px]" src="assets/qucate.svg">
+            <img class="inline mt-3 w-[192px]" src="src/img/qucate.svg">
             <p class="mb-8">Enhancing the quality of your functional software solutions</p>
-            <img class="m-auto w-full drop-shadow-2xl max-w-[920px]" src="assets/test-run.png">
+            <img class="m-auto w-full drop-shadow-2xl max-w-[920px]" src="src/img/test-run.png">
         </div>
     </div>
     <div class="w-full p-8 md:h-[600px] bg-white flex justify-center items-center">
@@ -90,7 +23,7 @@
                 <p class="text-left" data-animation="slide-left">A test management platform that provides a holistic view of your testing process</p>
             </div>
             <div class="col-span-2 m-auto">
-                <img class="inline" src="assets/rot-graph.png">
+                <img class="inline" src="src/img/rot-graph.png">
             </div>
         </div>
     </div>
@@ -100,7 +33,7 @@
                 <p>Transform your software testing process and improve quality.</p>
             </div>
             <div class="col-span-2 m-auto">
-                <img class="inline" src="assets/features.png">
+                <img class="inline" src="src/img/features.png">
             </div>
             <div class="col-span-1 m-auto my-8 md:my-auto text-base leading-10 font-semibold md:ml-12 md:text-right" data-animation="slide-right">
                 <p>Cloud native ✅</p>
@@ -118,14 +51,14 @@
                 <h1>No paid extras.</h1>
             </div>
             <div class="col-span-2 m-auto">
-                <img class="inline" src="assets/pricing.png">
+                <img class="inline" src="src/img/pricing.png">
             </div>
         </div>
     </div>
     <div class="w-full p-8">
         <div class="m-auto max-w-5xl md:grid grid-cols-3 md:h-[400px]">
             <div class="col-span-2 m-auto">
-                <img class="inline" src="assets/test-plan.png">
+                <img class="inline" src="src/img/test-plan.png">
             </div>
             <div class="col-span-1 m-auto">
                 <p class="font-semibold" data-animation="slide-right">Collaborate on the planning and management of test plans.</p>
@@ -134,66 +67,13 @@
         <hr class="border-1 my-12 border-solid border-[#D1D1D1] max-w-3xl m-auto">
         <div class="m-auto max-w-5xl md:grid grid-cols-3 md:h-[400px]">
             <div class="col-span-2 m-auto md:order-1">
-                <img class="inline" src="assets/test-plan-templates.png">
+                <img class="inline" src="src/img/test-plan-templates.png">
             </div>
             <div class="col-span-1 m-auto">
                 <p class="font-semibold" data-animation="slide-left">Create dynamic test plan templates and test run templates to speed up the software testing process.</p>
             </div>
         </div>
     </div>
-    <script>
-        // https://webdesign.tutsplus.com/tutorials/animate-on-scroll-with-javascript--cms-36671
-
-        const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-
-        // return elements that require animating
-        const scrollElements = document.querySelectorAll("[data-animation]");
-
-        // add relevant classes for pre-animation (if browser animations are enabled).
-        if (mediaQuery && !mediaQuery.matches)
-        {
-            scrollElements.forEach((el) => {
-                el.classList.add("opacity-0", "transition-opacity", "duration-500");
-            });
-        }
-
-        const elementInView = (el, percentageScroll = 100) => {
-            const elementTop = el.getBoundingClientRect().top;
-            return (
-                elementTop <= 
-                ((window.innerHeight || document.documentElement.clientHeight) * (percentageScroll/100))
-            );
-        };
-
-        const displayScrollElement = (element) => {
-            element.classList.add("animate-" + element.dataset.animation)
-        };
-
-        const handleScrollAnimation = () => {
-            scrollElements.forEach((el) => {
-                if (elementInView(el, 100))
-                    displayScrollElement(el);
-            })
-        }
-
-        let throttleTimer = false;
-        
-        const throttle = (callback, time) => {
-            if (throttleTimer) return;
-            
-            throttleTimer = true;
-            
-            setTimeout(() => {
-                callback();
-                throttleTimer = false;
-            }, time);
-        }
-
-        window.addEventListener('scroll', () => {
-            if (mediaQuery && !mediaQuery.matches) {
-                throttle(handleScrollAnimation, 300);
-            }
-        });
-    </script>
+    <script src="src/scripts/animate-scroll.js"></script>
 </body>
 </html>
