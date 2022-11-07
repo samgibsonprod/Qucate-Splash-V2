@@ -15,14 +15,61 @@
                             light: '#F5F5F5',
                             dark: '#F0F2F4'
                         }
+                    },
+                    keyframes: {
+                        'slide-in-left': {
+                            '0%': {
+                                transform: 'translateX(-200px)',
+                                opacity: 0
+                            },
+                            '100%': {
+                                transform: 'translateX(0)',
+                                opacity: 1
+                            }
+                        },
+                        'slide-in-right': {
+                            '0%': {
+                                transform: 'translateX(200px)',
+                                opacity: 0
+                            },
+                            '100%': {
+                                transform: 'translateX(0)',
+                                opacity: 1
+                            }
+                        },
+                        'slide-in-top': {
+                            '0%': {
+                                transform: 'translateY(-200px)',
+                                opacity: 0
+                            },
+                            '100%': {
+                                transform: 'translateY(0)',
+                                opacity: 1
+                            }
+                        },
+                        'slide-in-bottom': {
+                            '0%': {
+                                transform: 'translateY(200px)',
+                                opacity: 0
+                            },
+                            '100%': {
+                                transform: 'translateY(0)',
+                                opacity: 1
+                            }
+                        }
+                    },
+                    animation: {
+                        'slide-left': 'slide-in-left 1s ease-in-out both',
+                        'slide-right': 'slide-in-right 1s ease-in-out both',
+                        'slide-top': 'slide-in-top 1s ease-in-out both',
+                        'slide-bottom': 'slide-in-bottom 1s ease-in-out both'
                     }
                 },
                 fontFamily: {
                     'sans': ['Poppins', 'Roboto', '"Helvetica Neue"']
                 },
                 container: {
-                    center: true,
-                    //padding: '2rem'
+                    center: true
                 }
             }
         }
@@ -38,9 +85,9 @@
         </div>
     </div>
     <div class="w-full p-8 md:h-[600px] bg-white flex justify-center items-center">
-        <div class="m-auto max-w-5xl md:grid grid-cols-3">
+        <div class="m-auto max-w-5xl md:grid grid-cols-3 scroll-container">
             <div class="col-span-1 m-auto">
-                <p class="text-left">A test management platform that provides a holistic view of your testing process</p>
+                <p class="text-left" data-animation="slide-left">A test management platform that provides a holistic view of your testing process</p>
             </div>
             <div class="col-span-2 m-auto">
                 <img class="inline" src="assets/rot-graph.png">
@@ -55,7 +102,7 @@
             <div class="col-span-2 m-auto">
                 <img class="inline" src="assets/features.png">
             </div>
-            <div class="col-span-1 m-auto my-8 md:my-auto text-base leading-10 font-semibold md:ml-12 md:text-right">
+            <div class="col-span-1 m-auto my-8 md:my-auto text-base leading-10 font-semibold md:ml-12 md:text-right" data-animation="slide-right">
                 <p>Cloud native ✅</p>
                 <p>Extensive onboarding tutorial ✅</p>
                 <p>30-day free trial ✅</p>
@@ -66,7 +113,7 @@
     </div>
     <div class="w-full p-8 md:h-[600px] bg-white flex justify-center items-center">
         <div class="m-auto max-w-5xl md:grid grid-cols-3 gap-28">
-            <div class="col-span-1 m-auto text-2xl font-black">
+            <div class="col-span-1 m-auto text-2xl font-black" data-animation="slide-left">
                 <h1>No hidden costs.</h1>
                 <h1>No paid extras.</h1>
             </div>
@@ -81,7 +128,7 @@
                 <img class="inline" src="assets/test-plan.png">
             </div>
             <div class="col-span-1 m-auto">
-                <p class="font-semibold">Collaborate on the planning and management of test plans.</p>
+                <p class="font-semibold" data-animation="slide-right">Collaborate on the planning and management of test plans.</p>
             </div>
         </div>
         <hr class="border-1 my-12 border-solid border-[#D1D1D1] max-w-3xl m-auto">
@@ -90,9 +137,56 @@
                 <img class="inline" src="assets/test-plan-templates.png">
             </div>
             <div class="col-span-1 m-auto">
-                <p class="font-semibold">Create dynamic test plan templates and test run templates to speed up the software testing process.</p>
+                <p class="font-semibold" data-animation="slide-left">Create dynamic test plan templates and test run templates to speed up the software testing process.</p>
             </div>
         </div>
     </div>
+    <script>
+        // https://webdesign.tutsplus.com/tutorials/animate-on-scroll-with-javascript--cms-36671
+
+        // return elements that require animating
+        const scrollElements = document.querySelectorAll("[data-animation]");
+
+        // add relevant classes for pre-animation.
+        scrollElements.forEach((el) => {
+            el.classList.add("opacity-0", "transition-opacity", "duration-500");
+        })
+
+        const elementInView = (el, percentageScroll = 100) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return (
+                elementTop <= 
+                ((window.innerHeight || document.documentElement.clientHeight) * (percentageScroll/100))
+            );
+        };
+
+        const displayScrollElement = (element) => {
+            element.classList.add("animate-" + element.dataset.animation)
+        };
+
+        const handleScrollAnimation = () => {
+            scrollElements.forEach((el) => {
+                if (elementInView(el, 100))
+                    displayScrollElement(el);
+            })
+        }
+
+        let throttleTimer = false;
+        
+        const throttle = (callback, time) => {
+            if (throttleTimer) return;
+            
+            throttleTimer = true;
+            
+            setTimeout(() => {
+                callback();
+                throttleTimer = false;
+            }, time);
+        }
+
+        window.addEventListener('scroll', () => {
+            throttle(handleScrollAnimation, 300);
+        });
+    </script>
 </body>
 </html>
