@@ -47,8 +47,15 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     window.addEventListener('scroll', () => {
+        execute();
+    });
+
+    const execute = () => {
         if (mediaQuery && !mediaQuery.matches) {
             throttle(handleScrollAnimation, 300);
-        }
-    });
+        }  
+    }
+
+    execute();
+
 });
