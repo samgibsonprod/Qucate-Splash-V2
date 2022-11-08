@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (mediaQuery && !mediaQuery.matches)
     {
         scrollElements.forEach((el) => {
-            el.classList.add("opacity-0", "transition-opacity", "duration-500");
+            el.classList.add("opacity-0", "transition-opacity");
         });
     }
 
