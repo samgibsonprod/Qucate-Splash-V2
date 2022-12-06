@@ -5,7 +5,8 @@ tailwind.config = {
                 backdrop: {
                     light: '#F5F5F5',
                     dark: '#F0F2F4'
-                }
+                },
+                'royal-blue': '#09548A'
             },
             keyframes: {
                 'slide-in-left': {
